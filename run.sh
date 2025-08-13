@@ -2,7 +2,7 @@ REGISTRY=default-route-openshift-image-registry.apps.ocp.ati.to.gov.br
 
 podman build -f src/main/docker/Dockerfile.jvm -t $REGISTRY/tassinari/quarkus-rest-test-jvm .
 
-podman login -u 39403966807  -p $(oc whoami -t) $REGISTRY --tls-verify=false
+podman login -u $(oc whoami)  -p $(oc whoami -t) $REGISTRY --tls-verify=false
 
 podman push $REGISTRY/tassinari/quarkus-rest-test-jvm --tls-verify=false
 
